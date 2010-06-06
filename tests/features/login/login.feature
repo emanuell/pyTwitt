@@ -3,8 +3,8 @@ Feature: Twitter login
 	I want use my twitter account
 	So that I can get personal data
 	
-	Scenario: Authenticate
-		Given my username pytwitt2
+	Scenario: Auth
+		Given username pytwitt2
 		And my secret password abc123456
 		When I request for access
 		Then my user pytwitt2 object should be returned
