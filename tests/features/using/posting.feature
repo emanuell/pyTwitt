@@ -3,23 +3,23 @@ Feature: Twitter use
 	I want post twitts
 	So that I can update my status and interact with friends
 	
-	Scenario: Post twitt
+	Scenario: Post tweet
 		Given my username pytwitt2 and password abc123456
-		When post the twitt "Test"
+		When post the tweet "Test"
 		Then twitter should return True
 		And my user status should be changed to "Test"
-		And twitt "Test" should be last twitt
+		And twitt "Test" should be last tweet
 	
 	Scenario: Timeline
 		Given username pytwitt2 and password abc123456
-		When twitt "Test2"
-		And twitt "Test3"
+		When tweet "Test2"
+		And tweet "Test3"
 		Then timeline should be "Test3" first
 		And "Test2" should be second
 		
-	Scenario: Posting same twitt
+	Scenario: Posting same tweet
 		Given username pytwitt2 and password abc123456
-		When post the same twitt "Test2"
+		When post the same tweet "Test2"
 		Then twitter should return False
 
 	
