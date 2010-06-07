@@ -1,6 +1,6 @@
 Feature: Twitter use
 	As a registred twitter user
-	I want post twitts
+	I want post tweets
 	So that I can update my status and interact with friends
 	
 	Scenario: Post tweet
@@ -8,7 +8,7 @@ Feature: Twitter use
 		When post the tweet "Test"
 		Then twitter should return True
 		And my user status should be changed to "Test"
-		And twitt "Test" should be last tweet
+		And tweet "Test" should be last tweet
 	
 	Scenario: Timeline
 		Given username pytwitt2 and password abc123456

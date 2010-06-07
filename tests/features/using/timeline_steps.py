@@ -5,14 +5,14 @@ from pytwitt.core import Twitter, User
 def given_username_and_password(step, username, password):
 	world.twitter = Twitter(username, password)
 
-@step(r'When twitt "(.*)"')
+@step(r'When tweet "(.*)"')
 def when_twitt_msg1(step, msg):
 	user = world.twitter.user
 	
 	posted = user.twitt(msg)
 	assert posted == True, 'got %s' % posted
 
-@step(r'And twitt "(.*)"')
+@step(r'And tweet "(.*)"')
 def and_twitt_msg2(step, msg):
 	user = world.twitter.user
 	

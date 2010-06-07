@@ -5,7 +5,7 @@ from pytwitt.core import Twitter, User
 def given_username_and_password(step, username, password):
 	world.twitter = Twitter(username, password)
 
-@step(r'When post the same twitt "(.*)"')
+@step(r'When post the same tweet "(.*)"')
 def when_post_the_same_twitt(step, twitt):
 	user = world.twitter.user
 	
