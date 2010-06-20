@@ -10,7 +10,7 @@ def given_my_username_and_password(step, username, password):
 def when_post_a_twitt(step, twitt):
 	user = world.twitter.user
 	
-	world.result = user.twitt(twitt)
+	world.result = user.tweet(twitt)
 
 @step(r'Then twitter should return (.*)')
 def then_twitter_should_return(step, str_boolean):
@@ -25,4 +25,4 @@ def And_my_user_status_should_be_changed(step, twitt):
 @step(r'And tweet "(.*)" should be last tweet')
 def and_twitt_should_be_in_timeline(step, twitt):
 	user = world.twitter.user
-	assert user.last_twitt() == twitt, 'got %s' % user.last_twitt
+	assert user.last_tweet() == twitt, 'got %s' % user.last_twitt

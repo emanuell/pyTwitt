@@ -1,5 +1,6 @@
 
 from lettuce import *
+from nose.tools import *
 from pytwitt.core import Twitter, User
 
 @step(r'Given username (\S+)')
@@ -19,5 +20,5 @@ def then_my_user_should_be_returned(step, username):
 	twitter = world.twitter
 	
 	assert twitter
-	assert twitter.user, 'Got %s' % twitter.user
-	assert username == twitter.user.name, 'Got %s' % twitter.user.name
+	assert_not_equals(twitter.user, None)
+	assert_equals(username, twitter.user.name)

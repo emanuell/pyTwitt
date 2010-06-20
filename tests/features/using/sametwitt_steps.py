@@ -9,7 +9,7 @@ def given_username_and_password(step, username, password):
 def when_post_the_same_twitt(step, twitt):
 	user = world.twitter.user
 	
-	world.result = user.twitt(twitt)
+	world.result = user.tweet(twitt)
 
 @step(r'Then twitter should return (.*)')
 def then_twitter_should_return(step, str_boolean):

@@ -21,5 +21,10 @@ Feature: Twitter use
 		Given username pytwitt2 and password abc123456
 		When post the same tweet "Test2"
 		Then twitter should return False
+		
+	Scenario: Clean timeline
+		Given a registred user, pytwitt2 and abc123456
+		When clean the timeline
+		Then timeline should be empty
 
 	

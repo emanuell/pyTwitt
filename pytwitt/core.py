@@ -9,7 +9,7 @@ class User(object):
 		self.username = username
 		self.__password = password
 		
-		self.__api = internal.Api(username, password)
+		self.__api = internal.Api(username, password, None)
 		
 		try:
 			self.__user = self.__api.GetUser(username)
@@ -22,10 +22,20 @@ class User(object):
 		self.bio = self.__user.description
 		self.location = self.__user.location
 		self.id = self.__user.id
-		self.status = self.__user.status
-		self.timeline = []
+		
+		if self.__user.status != None:
+			self.status = self.__user.status.text
+		else:
+			self.status = None
+		
+		self._set_timeline()
 	
-	def twitt(self, msg):
+	def clean_timeline(self):
+		real_timeline = self.__api.GetUserTimeline()
+		for status in real_timeline:
+			self.__api.DestroyStatus(status.id)
+	
+	def tweet(self, msg):
 		try:
 			msg = str(msg)
 			user_status = self.__api.PostUpdate(msg)
@@ -34,18 +44,25 @@ class User(object):
 		
 		if user_status:
 			self.status = user_status.text
-			self._set_timeline()
+			self.__timeline.insert(0, self.status)
+		
 		
 		return True
 	
-	def last_twitt(self):
+	def last_tweet(self):
 		return self.status
 	
 	def _set_timeline(self):
 		timeline = self.__api.GetUserTimeline(self.username)
+		self.__timeline = []
 		
 		for status in timeline:
-			self.timeline.append(status.text)
+			self.__timeline.append(status.text)
+		
+	
+	def timeline(self):
+		timeline_copy = self.__timeline[:]
+		return timeline_copy
 	
 
 class Twitter(object):
